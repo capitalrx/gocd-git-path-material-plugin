@@ -69,7 +69,7 @@ public class GetLatestRevisionRequestHandlerTest {
             Revision revision = new Revision("1", new Date(), "comment", "user", "blah@blah.com", Collections.emptyList());
             RequestHandler checkoutRequestHandler = new GetLatestRevisionRequestHandler();
             ArgumentCaptor<Map<String, Object>> responseArgumentCaptor = ArgumentCaptor.forClass(Map.class);
-            List<String> paths = List.of("path1", "path2");
+            List<String> paths = List.of("**");
 
             when(JsonUtils.renderSuccessApiResponse(responseArgumentCaptor.capture())).thenReturn(mock(GoPluginApiResponse.class));
             when(JsonUtils.getPaths(pluginApiRequestMock)).thenReturn(paths);

@@ -43,7 +43,7 @@ public class LatestRevisionSinceRequestHandler implements RequestHandler {
         try {
             GitHelper git = HelperFactory.git(gitConfig, flyweightFolder);
             git.cloneOrFetch();
-            final List<String> paths = JsonUtils.getPaths(apiRequest);
+            final List<String> paths = List.of("**");
             List<Revision> newerRevisions = git.getRevisionsSince(previousRevision, paths);
 
             LOGGER.debug(String.format("Fetching newerRevisions for paths %s", paths));

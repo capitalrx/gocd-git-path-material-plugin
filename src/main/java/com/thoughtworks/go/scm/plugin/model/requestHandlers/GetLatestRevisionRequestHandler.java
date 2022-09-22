@@ -36,7 +36,7 @@ public class GetLatestRevisionRequestHandler implements RequestHandler {
         try {
             GitHelper git = HelperFactory.git(gitConfig, flyweightFolder);
             git.cloneOrFetch();
-            final List<String> paths = JsonUtils.getPaths(apiRequest);
+            final List<String> paths = List.of("**");
             final Revision revision = git.getLatestRevision(paths);
 
             LOGGER.debug(String.format("Fetching latestRevision for paths %s", paths));
